@@ -11,42 +11,31 @@ A Python tool that extracts data from payslip PDFs and exports the information t
 
 ## Requirements
 
-- Python 3.9+
+- Docker
 
-## Installation
-
-### Using Docker
+## 🚀 Installation
 
 ```bash
-docker build -t payslip-parser .
+docker build -t payslip-to-csv .
 ```
 
-### Local Installation
+## ▶️ Usage
 
+### **📂 Prepare Input**
+Place your payslip PDF files in the `input/` directory.
+
+### **🐳 Docker Run**
 ```bash
-pip install -r requirements.txt
+docker run \
+  -v $(pwd)/input:/app/input \
+  -v $(pwd)/output:/app/output \
+  payslip-to-csv
 ```
+### **📤 Output**
+Results will appear in the `output/` directory:
 
-## Usage
-
-1. Place payslip PDF files in the `input/` directory
-2. Run the script:
-
-### Local
-
-```bash
-python main.py
-```
-
-### Docker
-
-```bash
-docker run -v $(pwd)/input:/app/input -v $(pwd)/output:/app/output payslip-parser
-```
-
-3. Find the results in the `output/` directory:
-    - `payslip-log.csv` - consolidated payslip data
-    - Renamed PDFs in `YYYY-MM-DD-payslip.pdf` format
+- **payslip-log.csv** — consolidated payroll data  
+- **Renamed PDFs** in `YYYY-MM-DD-payslip.pdf` format
 
 ## Output CSV Columns
 
